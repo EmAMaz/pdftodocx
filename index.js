@@ -6,6 +6,20 @@ const path = require("path");
 const multer = require("multer");
 const { PythonShell } = require("python-shell");
 
+
+const uploadsDir = path.join(__dirname, "uploads");
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+  console.log("Carpeta 'uploads' creada automáticamente.");
+}
+
+const docxDir = path.join(__dirname, "docx");
+if (!fs.existsSync(docxDir)) {
+  fs.mkdirSync(docxDir, { recursive: true });
+  console.log("Carpeta 'docx' creada automáticamente.");
+}
+
+
 // Configuración de Multer para manejar la carga de archivos
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
